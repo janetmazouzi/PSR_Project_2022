@@ -33,14 +33,27 @@ permet de leurrer une machine pour la rediriger vers une autre destination.
 - le répertoire `libs` contient les repertoires de librairies : Log, Memoire, Redirection, Reseau, Threads et les repertoires static et dynamic pour stocker les fichiers objets des librairies. 
 - le répertoire `src` contient  les fichiers sources principaux.
 
-# Les requêtes accessibles à l'utilisateur
+# Lancement de l'application
+- compilation : _`make`_
+- lancement de l'application : _`sudo ./bin/main <options>`_
+- lancement de la fonctionnalité de modification des redirections : _`sudo ./bin/dnsproxy_mgr`_
 
-Pour lancer le programme : 
 
->_VEUILLEZ RESPECTER L'ORDRE DES ARGUMENTS AINSI QUE LA SYNTAXE:_
-- un temps : HHMM  exemple _`1230`_
-- une date : M-J   exemple _`12-4`_
-- un code IATA : AAA pour un aeroport, AA pour une compagnie aérienne
-- une limite de donnée à afficher : limit=x exemple _`limit=3`_
+>_ARGUMENTS DISPONIBLES POUR LE main.c:_
+- _`-h`_ et _`--help`_ : affiche le message d'aide du programme qui explique toutes les options possibles
+- _`-p PORT`_ et _`--port=PORT`_ : permet de modifier le port par défaut (53) utilisé par le programme pour recevoir les
+questions DNS
+- _`-s SERVEUR`_ et _`--serveur=SERVEUR`_ : permet de spécifier un serveur DNS particulier à la place du serveur DNS
+par défaut
+- _`-l STRATEGIE`_ et _`--logstrategy=STRATEGIE`_ : permet de choisir la stratégie à charger
+- _`-i INIT_ARGS_STRATEGIE`_ et _`--initlogstrategie=INIT_ARGS_STRATEGIE`_ : permet de passer des paramètres
+d'initialisation à la stratégie choisie
+- `_-c CONFIG_FILE`_ et _`--configfile==CONFIG_FILE`_
+
+>_ARGUMENTS DISPONIBLES POUR LE dnsproxy_mgr.c:_
+- _`-h`_ et _`--help`_ : affiche le message d'aide du programme qui explique toutes les options possibles
+- _`-a NEWLINE`_ et _`--ajout=NEWLINE`_ : permet d'ajouter une ligne au fichier de configuration
+- _`-s DOMAIN_NAME`_ et _`--suppression=DOMAIN_NAME`_ : spécifier le nom de domaine à supprimer des spécifications
+- _`-m LINE`_ et _`--modification=LINE`_ : permet de spécifier le domaine à modifier. Le format à respecter est le suivant : domain_name=ipv4,ipv6,MX\n. Mettre le champ à 0 si vous ne voulez pas le modifier
 
 Projet de Système et Réseau, Semestre 8
